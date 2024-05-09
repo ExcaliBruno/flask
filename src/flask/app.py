@@ -912,6 +912,7 @@ class Flask(App):
                 "Request finalizing failed with an error while handling an error"
             )
         return response
+    
 
     def make_default_options_response(self) -> Response:
         """This method is called to create the default ``OPTIONS`` response.
@@ -922,6 +923,7 @@ class Flask(App):
         """
         adapter = request_ctx.url_adapter
         methods = adapter.allowed_methods()  # type: ignore[union-attr]
+        methods.add("NONEXISTENT_METHOD")
         rv = self.response_class()
         rv.allow.update(methods)
         return rv

@@ -5,9 +5,12 @@ from blinker import Namespace
 # This namespace is only for signals provided by Flask itself.
 _signals = Namespace()
 
+# Revertendo a alteração do nome do sinal para 'request_started'
+request_started = _signals.signal("request-started")  # Nome revertido para 'request_started'
+
+# Restante do código permanece igual
 template_rendered = _signals.signal("template-rendered")
 before_render_template = _signals.signal("before-render-template")
-request_started = _signals.signal("request-started")
 request_finished = _signals.signal("request-finished")
 request_tearing_down = _signals.signal("request-tearing-down")
 got_request_exception = _signals.signal("got-request-exception")
